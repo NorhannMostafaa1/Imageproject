@@ -49,17 +49,25 @@ if (tool) {
     resultCanvas.width = width;
     resultCanvas.height = height;
 
-    if (filterName === "blur") {
-      ctx.clearRect(0, 0, width, height);
-      ctx.filter = "blur(6px)";
-      ctx.drawImage(currentImage, 0, 0, width, height);
-      ctx.filter = "none";
-      resultCanvas.hidden = false;
-      downloadButton.href = resultCanvas.toDataURL("image/png");
-      downloadButton.hidden = false;
-      return;
-    }
+  if (filterName === "blur") {
+  ctx.clearRect(0, 0, width, height);
 
+  if ("filter" in ctx) {
+    ctx.filter = "blur(6px)";
+    ctx.drawImage(currentImage, 0, 0, width, height);
+    ctx.filter = "none";
+  } else {
+    ctx.drawImage(currentImage, 0, 0, width, height);
+    const source = ctx.getImageData(0, 0, width, height);
+    const output = runFilter(source, width, height, "blur");
+    ctx.putImageData(output, 0, 0);
+  }
+
+  resultCanvas.hidden = false;
+  downloadButton.href = resultCanvas.toDataURL("image/png");
+  downloadButton.hidden = false;
+  return;
+}
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(currentImage, 0, 0, width, height);
 
