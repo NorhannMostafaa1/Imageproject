@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noise Cancellation</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <main class="mainn">
+    <div class="page-topbar">
+      <a href="allfilters.html" class="btn">Back to Filters</a>
+    </div>
+    <section class="filter-shell">
+      <div class="filter-hero">
+        <p class="filter-kicker">Premium Studio</p>
+        <div class="head">Clean Noise Removal</div>
+        <p class="filter-lead">Reduce distracting grain and speckles so the important textures feel calmer, sharper, and more intentional.</p>
+        <div class="filter-tags">
+          <span>Smoother Finish</span>
+          <span>Cleaner Surface</span>
+          <span>Fast Results</span>
+        </div>
+      </div>
+      <section class="upload-box premium-box" data-filter="denoise">
+        <div class="tool-heading">
+          <div>
+            <p class="tool-label">Noise Filter</p>
+            <h2>Upload Your Image for Noise Cancellation</h2>
+            <p class="tool-copy">Use a median filter to smooth out random speckles.</p>
+          </div>
+          <div class="tool-badge">Live Preview</div>
+        </div>
+        <input type="file" class="imageInput" accept="image/*" required hidden>
+        <div class="tool-actions">
+          <button class="btn chooseButton" type="button">Choose Image</button>
+          <button class="btn applyButton" type="button" hidden>Reduce Noise</button>
+          <a class="btn downloadButton" hidden download="denoised-image.png">Download</a>
+        </div>
+        <div class="preview-frame">
+          <div class="preview-header">
+            <span>Original image</span>
+            <span>Processed result</span>
+          </div>
+          <div class="preview">
+            <img class="previewImage" hidden alt="Original image preview">
+            <canvas class="resultCanvas" hidden aria-label="Noise cancellation result"></canvas>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="../static/image-tools.js"></script>
+</body>
+</html>
+
