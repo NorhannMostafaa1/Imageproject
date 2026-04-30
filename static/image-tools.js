@@ -31,11 +31,10 @@ if (tool) {
       resultCanvas.width = width;
       resultCanvas.height = height;
       ctx.clearRect(0, 0, width, height);
-      ctx.drawImage(currentImage, 0, 0, width, height);
 
       applyButton.hidden = false;
       downloadButton.hidden = true;
-      resultCanvas.hidden = false;
+      resultCanvas.hidden = true;
     };
     currentImage.src = objectUrl;
   });
@@ -83,14 +82,14 @@ function runFilter(imageData, width, height, filterName) {
         1 / 9, 1 / 9, 1 / 9
       ]);
     case "brightness":
-      return adjustBrightness(imageData, 35);
+      return adjustBrightness(imageData, 70);
     case "contrast":
       return adjustContrast(imageData, 40);
     case "sharpen":
       return convolve(imageData, width, height, [
-        -1, -1, -1,
-        -1,  9, -1,
-        -1, -1, -1
+         0, -1,  0,
+        -1,  7, -1,
+         0, -1,  0
       ]);
     case "denoise":
       return medianFilter(imageData, width, height);
